@@ -1,8 +1,10 @@
-# Project com.mycompany/BookStoreProject
+# Book Store
 
-Steps to run this project:
+# How to run project
 
-1. Start your Docker daemon
-2. Execute `./buildAndRun.sh` (Linux/MacOs) or `buildAndRun.bat` (Windows)
-3. Wait until Open Liberty is up- and running (e.g. use `docker logs -f CONTAINER_ID`)
-4. Visit http://localhost:9080/resources/sample
+Maven build automation tool is used in the project. 
+Run the maven comman below to run the application.
+
+>* $ mvn spring-boot:run
+
+
