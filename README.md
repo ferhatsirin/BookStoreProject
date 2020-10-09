@@ -26,7 +26,7 @@ To run tests, use the command
 
 **Java Spring JPA API** is used for repositoriy management. Spring JPA uses Hibernate as JPA provider. It help us to interact with the database without writing database dependent queries. It provides built-in functions to save, update and delete objects in the database.
 
-**H2 database** is used as a embedded database. It is used as in-memory database so that data will be deleted after deployment process ends. H2 database helps use to test application faster by simplifying the process so that we dont have to create a heavy weight database management system like mysql.  
+**H2 database** is used as an embedded database. It is used as in-memory database so that data will be deleted after deployment process ends. H2 database helps us to test application faster by simplifying the process so that we dont have to create a heavy weight database management system like mysql.  
 
 **Spring Boot Test Module** is used to test the services. Test module includes JUnit, AssertJ and Hamcrest etc. modules to test the application. Book, Author and Publisher services are tested with their repositories to verify that those functions works as expected.
 
@@ -36,7 +36,7 @@ To run tests, use the command
 
 ### Implementation
 
-3 main entites Book, Author, Publisher is created to represent the respective data.
+3 main entites Book, Author, Publisher are created to represent the respective data.
 
 Author and Publisher have name, email and address properties.
 
@@ -45,8 +45,10 @@ Book has name, subtitle, isbn, series name, and author and publisher properties.
 Since Book is connected to a certain Author and Publisher, When Author or Publisher is deleted, All books that connected to them are also deleted.
 User has to define an author and a publisher before defining a book that connected to them.
 
-Database tables are automatically created when application is deployed and some pre-defined values are inserted to the tables for test purpose.
+Database tables for Book, Author and Publisher are automatically created when application is deployed and some pre-defined values are inserted to the tables for test purpose.
 
 Search can be done for the name of book or author. Search is case in-sensitive.
+
+Spring Boot provides an embedded tomcat container server to deploy the project. 
 
 
