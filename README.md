@@ -24,7 +24,7 @@ To run tests, use the command
 
 **Java Spring Boot framework** is used to simplify the development process. Spring boot manages the configuration process so that we can develop application faster. Boot starter package provides all necessary dependency packages for the development process.
 
-**Java Spring JPA API** is used for repositoriy management. Spring JPA uses Hibernate as JPA provider. It help us to interact with the database without writing database dependent queries. It provides built-in functions to save, update and delete object in the database.
+**Java Spring JPA API** is used for repositoriy management. Spring JPA uses Hibernate as JPA provider. It help us to interact with the database without writing database dependent queries. It provides built-in functions to save, update and delete objects in the database.
 
 **H2 database** is used as a embedded database. It is used as in-memory database so that data will be deleted after deployment process ends. H2 database helps use to test application faster by simplifying the process so that we dont have to create a heavy weight database management system like mysql.  
 
