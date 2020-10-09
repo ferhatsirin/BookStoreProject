@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+        <title>Book Store</title>
+        <style type="text/css">
+
+            table{
+                border-collapse:collapse;
+                width: 100%;
+            }
+
+            th, td{
+                text-align:left;
+                padding:8px;
+            }
+
+            tr:nth-child(even){background-color:#f2f2f2}
+
+            th{
+                background-color:#4caf50;
+                color:white;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="jumbotron text-center"> <h1>BOOK STORE</h1></div>
+
+            <nav class ="navbar navbar-expand-md navbar-dark  bg-dark">
+
+                <ul class ="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" > Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class ="nav-link" href="/addBook">Add Book</a>
+                    </li>
+                    <li class = "nav-item">
+                        <a class ="nav-link" href ="/addAuthor">Add Author</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href ="/addPublisher" >Add Publisher</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </header>
+        <br />
+        <nav aria-label="Secondary">
+            <div class="container">
+                <div class="row">
+                    <form class="form-vertical" th:action="@{/search}" method="post" th:object="${search}">
+                        <input class="form-control" type="text" placeholder="Search" th:field="*{text}" aria-label="Search" />
+
+                        <input type="radio" name="type" th:value="1" th:field=*{type} th:checked="true"/>
+                        <label >Book</label>
+                        <input type="radio"  name="type" th:value="2" th:field="*{type}" />
+                        <label >Author</label>
+                        <br />
+                        <input type="submit" class="btn btn-success btn-rounded " th:value="Search" />
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+
+
+
+        <main role="main">
+
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="card-body">
+                <div class="container">
+                    <h1 class="display-3">Search Results</h1>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Authors</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>E-Mail</th>
+                                    <th>Address</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="author : ${authors}">
+                                    <td><span th:text="${author.id}"></span></td>
+                                    <td><span th:text="${author.name}"></span></td>
+                                    <td><span th:text="${author.email}"></span></td><!-- comment -->
+                                    <td><span th:text="${author.address}"></span></td><!-- comment -->
+                                    <td><form  th:action="@{/editAuthor}" method="post" >
+                                            <input type="hidden" th:value="${author.id}" name="id"/>
+                                            <input type="submit" class="btn btn-success" th:value="Update"/></form> </td>
+                                    <td><form th:action="@{/deleteAuthor}" method="post" >
+                                            <input type="hidden" th:value="${author.id}" name="id"/>
+                                            <input type="submit" class="btn btn-success" th:value="Delete" /></form> </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <hr />
+
+            </div>
+
+        </main>
+
+    </body>
+
+</html>

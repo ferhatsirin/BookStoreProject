@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Add Author</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> Add Author </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-info" th:href="@{/}"> Home Page </a>
+                    <hr />
+
+                    <form class="form-vertical" th:action="@{/saveAuthor}" th:object="${author}"
+                          method="post">
+                        <fieldset>
+                            <legend>Author</legend>
+
+                            <div class="col-md-9 form-group">
+                                <label >Name:</label>
+                                <input type="text" class="form-control" th:field="*{name}" th:required="required" />
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label  >E-Mail: </label>
+                                <input type="email" class="form-control" th:field="*{email}" />
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label  >Address: </label>
+                                <input type="text" class="form-control" th:field="*{address}" />
+                            </div>
+
+                            <hr />
+
+                            <span class="pull-right">
+                                <input type="submit" id="submitButton" class="btn btn-success" th:value="Save" />
+                                <input type="reset" id="resetButton" class="btn btn-danger" th:value="Reset"/>
+                            </span>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

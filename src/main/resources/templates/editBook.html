@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Edit Book</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> Edit Books </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-info"  th:href="@{/}"> Home Page </a>
+                    <hr />
+
+                    <form class="form-vertical" th:action="@{/updateBook}" th:object="${book}"
+                          method="post">
+                        <input type="hidden" th:value="*{id}" name="id" />
+                        <fieldset>
+                            <legend>Book</legend>
+
+                            <div class="col-md-9 form-group">
+                                <label >Name:</label>
+                                <input type="text" class="form-control" th:field="*{name}" th:required="required" />
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label  >Subtitle: </label>
+                                <input type="text" class="form-control" th:field="*{subtitle}" />
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label  >Series Name: </label>
+                                <input type="text" class="form-control" th:field="*{seriesName}" />
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label  >Description: </label>
+                                <textarea class="form-control" th:field="*{description}" rows="2"></textarea>
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label >ISBN: </label>
+                                <input type="text" class="form-control" th:field="*{ISBN}" />
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label  >Author Name: </label>
+                                <select class="form-control" th:field="*{author}" th:required="true" >
+                                    <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}" th:selected="${author.id == book.author.id}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-9 form-group">
+                                <label >Publisher: </label>
+                                <select class="form-control" th:field="*{publisher}" th:required="true">
+                                    <option th:each="publisher : ${publishers}" th:value="${publisher.id}" th:text="${publisher.name}" th:selected="${publisher.id == book.publisher.id}"></option>
+                                </select>
+                            </div>
+
+                            <hr />
+
+                            <span class="pull-right">
+                                <input type="submit" id="submitButton" class="btn btn-success" th:value="Update" />
+                            </span>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>
